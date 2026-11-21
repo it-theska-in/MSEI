@@ -1,5 +1,5 @@
 const $ = (id) => document.getElementById(id);
-const OPTS = ["overwrite", "autoFill", "firePostback", "defaultRemarkNA", "defaultRemarkNC"];
+const OPTS = ["overwrite", "defaultRemarkNA", "defaultRemarkNC"];
 let hasData = false;
 
 const store = {
@@ -61,7 +61,7 @@ async function talk(tab, msg) {
   let r = await send(tab.id, msg);
   if (r) return r;
   try {
-    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["xlsx.js", "fill.js", "content.js"] });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["fill.js", "content.js"] });
   } catch (e) {
     return { error: tab.url?.startsWith("file:")
       ? "Chrome blocks extensions on local files. In chrome://extensions > MSE Inspection Autofill > Details, turn on \"Allow access to file URLs\", then reload the page."
@@ -75,12 +75,17 @@ $("fill").addEventListener("click", async () => {
   $("result").textContent = "Filling…";
   const r = await talk(await activeTab(), { type: "MSE_FILL" });
   if (r.error) { $("result").className = "err"; $("result").textContent = r.error; return; }
-  $("result").className = r.unmatchedPage.length || r.badStatus.length ? "" : "ok";
-  $("result").textContent =
-    `Chapter ${r.chapter.id}: ${r.filled} rows filled, ${r.statusSet} statuses set.` +
-    (r.unmatchedPage.length ? `\nNot in Excel: ${r.unmatchedPage.join(", ")}` : "") +
-    (r.skipped ? `\n${r.skipped} boxes already had values (kept).` : "") +
-    "\nReview the page, then click Save.";
+  const warn = r.unmatchedPage.length || r.badStatus.length || r.textMismatch.length;
+  $("result").className = warn ? "" : "ok";
+  $("result").textContent = [
+    `Chapter ${r.chapter.id}: ${r.filled} rows filled, ${r.statusSet} statuses set.`,
+    r.skipped && `${r.skipped} boxes already had values and were kept (tick "Overwrite" to replace them).`,
+    r.unmatchedPage.length && `Not in Excel (red): ${r.unmatchedPage.join(", ")}`,
+    r.textMismatch.length && `Matched by S.No only, so check the wording (orange): ${r.textMismatch.join(", ")}`,
+    r.unmatchedExcel.length && `Excel rows not on this page: ${r.unmatchedExcel.join(", ")}`,
+    r.badStatus.length && `Unknown status values: ${r.badStatus.join(", ")}`,
+    "Review the page, then click Save."
+  ].filter(Boolean).join("\n");
 });
 
 (async () => {

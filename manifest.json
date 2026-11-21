@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "MSE Inspection Autofill",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Fills MSE internal audit report chapters from the Annexure II Excel. Runs locally; your data never leaves your computer.",
   "icons": {
     "16": "icons/icon16.png",
@@ -23,7 +23,7 @@
   "content_scripts": [
     {
       "matches": ["https://inspection-os.msei.in/*", "http://inspection-os.msei.in/*", "file:///*", "http://localhost/*"],
-      "js": ["xlsx.js", "fill.js", "content.js"],
+      "js": ["fill.js", "content.js"],
       "run_at": "document_idle"
     }
   ]

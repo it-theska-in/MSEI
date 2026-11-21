@@ -19,9 +19,9 @@ Fill MSE internal audit report chapters from your Annexure II Excel in one click
 MSE Inspection Autofill saves auditors from re-typing the Annexure II working paper into the MSE inspection portal, one checkpoint at a time.
 
 HOW IT WORKS
-1. Upload your filled Annexure II Excel (.xlsx) once, from the extension icon or the Load Excel button on the page.
+1. Click the extension icon and choose your filled Annexure II Excel (.xlsx). You only do this once.
 2. Open any chapter of the Internal Audit Report on inspection-os.msei.in.
-3. Click "Autofill from Excel". The chapter is filled in seconds.
+3. Click "Fill this chapter". The chapter is filled in seconds. Nothing is filled until you click.
 4. Review the page and click Save yourself. The extension never submits anything for you.
 
 WHAT IT FILLS
@@ -38,7 +38,6 @@ BUILT FOR ACCURACY
 • Shows a summary of anything it couldn't match.
 • Keeps values already on the page unless you turn on Overwrite.
 • Removes characters the portal rejects (" ' ; = -) and respects field length limits.
-• Optional: fill each chapter automatically as soon as you open it after "Save & Continue".
 
 PRIVATE BY DESIGN
 Everything runs in your browser. The Excel is stored only in Chrome's local extension storage on your computer. Nothing is sent to the developer or any third party, and the extension has no analytics or tracking. It only runs on inspection-os.msei.in.
@@ -69,9 +68,9 @@ Fills the Internal Audit Report chapter pages on the MSE inspection portal (insp
 | Permission | Justification |
 |---|---|
 | `storage` | Keeps the parsed Annexure II Excel data and the user's settings in local extension storage, so the file is uploaded once and reused on every chapter page. Nothing is synced or transmitted. |
-| `activeTab` | Lets the popup's "Fill this chapter" button reach the portal tab the user is looking at when they click it. |
+| `activeTab` | Lets the popup read the open portal tab's chapter number and fill it when the user clicks "Fill this chapter". |
 | `scripting` | If the portal tab was opened before the extension was installed or updated, the popup injects the extension's own packaged content script into that tab so the fill can run without a reload. No remote code is injected. |
-| Host permission `https://inspection-os.msei.in/*` | The extension only works on this portal. It needs access to show its Autofill buttons on chapter pages and to fill the audit form fields. |
+| Host permission `https://inspection-os.msei.in/*` | The extension only works on this portal. It needs access to read the open chapter and fill the audit form fields when the user clicks "Fill this chapter". |
 
 **Remote code:** No, I am not using remote code. All JavaScript ships in the package. There is no eval and no external scripts.
 

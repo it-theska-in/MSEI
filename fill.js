@@ -86,9 +86,9 @@ var MSEFill = (() => {
   }
 
   /**
-   * opts: { overwrite, defaultRemarkNA, defaultRemarkNC, firePostback }
-   * firePostback=false sets the status without triggering the page's auto-postback;
-   * the values are submitted when the user clicks Save.
+   * opts: { overwrite, defaultRemarkNA, defaultRemarkNC }
+   * Statuses are set without the page's auto-postback (no refresh); the values are
+   * submitted when the user clicks Save.
    */
   function fill(doc, data, opts = {}) {
     const info = pageInfo(doc);
@@ -101,7 +101,6 @@ var MSEFill = (() => {
 
     const { pairs, unusedExcel } = matchRows(rows, chapter.rows);
     report.unmatchedExcel = unusedExcel.map((e) => `${e.sno || "-"} (Excel row ${e.excelRow})`);
-    let postbackTarget = null;
 
     for (const { pr, ex, how } of pairs) {
       if (!ex) { report.unmatchedPage.push(pr.sno); mark(pr.select, "#d9534f"); continue; }
@@ -116,7 +115,6 @@ var MSEFill = (() => {
         if (opt && (opts.overwrite || isBlank) && pr.select.value !== opt.value) {
           pr.select.value = opt.value;
           report.statusSet++;
-          if (opts.firePostback) postbackTarget = pr.select;
         }
         if (opt) mark(pr.select, color);
       }
@@ -138,8 +136,6 @@ var MSEFill = (() => {
       if (any || want) report.filled++;
     }
 
-    // Optional: let the portal run its own status-change postback once, after everything is set.
-    if (postbackTarget) postbackTarget.dispatchEvent(new Event("change", { bubbles: true }));
     return report;
   }
 

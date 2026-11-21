@@ -47,13 +47,13 @@
   <p class="summary">MSE Inspection Autofill runs entirely in your browser. It reads the Excel file you choose and fills the audit report page you have open. Nothing is sent to us or to any third party. There are no analytics, tracking, or ads.</p>
 
   <h2>What the extension does</h2>
-  <p>Auditors use the extension to fill the Internal Audit Report chapter pages on the MSE inspection portal (<code>inspection-os.msei.in</code>) from the Annexure II Excel template. You upload the Excel file, open a chapter page, and click a button to fill it. You review the page and submit it to the portal yourself. The extension never submits forms for you.</p>
+  <p>Auditors use the extension to fill the Internal Audit Report chapter pages on the MSE inspection portal (<code>inspection-os.msei.in</code>) from the Annexure II Excel template. You choose the Excel file in the extension popup, open a chapter page, and click "Fill this chapter". Nothing is filled until you click. You review the page and submit it to the portal yourself. The extension never submits forms for you.</p>
 
   <h2>Information the extension handles</h2>
   <table>
     <tr><th>Information</th><th>How it is used</th><th>Where it stays</th></tr>
     <tr><td>Contents of the Excel file you choose (checkpoint wording, compliance status, sample sizes, instance counts, percentages, amounts, remarks)</td><td>To fill the matching fields on the chapter page</td><td>Your browser's local extension storage (<code>chrome.storage.local</code>) on your computer</td></tr>
-    <tr><td>Your extension settings (overwrite, auto-fill, default remarks)</td><td>To remember your choices</td><td>Local extension storage on your computer</td></tr>
+    <tr><td>Your extension settings (overwrite, default remarks)</td><td>To remember your choices</td><td>Local extension storage on your computer</td></tr>
     <tr><td>The open chapter page on the MSE portal (chapter number, checkpoint wording, form fields)</td><td>Read in the page so each Excel row lands in the right field, and the fields are filled there</td><td>Never stored or copied anywhere by the extension</td></tr>
   </table>
   <p>The extension does <strong>not</strong> collect your name, email, login details, passwords, browsing history, location, or any other personal information. It does not read pages on any other website.</p>
@@ -69,7 +69,7 @@
   <h2>Permissions</h2>
   <table>
     <tr><th>Permission</th><th>Why it is needed</th></tr>
-    <tr><td>Access to <code>inspection-os.msei.in</code></td><td>To show the Autofill buttons on chapter pages and fill the form fields</td></tr>
+    <tr><td>Access to <code>inspection-os.msei.in</code></td><td>To read the chapter number and fill the form fields on chapter pages, only when you click "Fill this chapter"</td></tr>
     <tr><td><code>storage</code></td><td>To keep the uploaded Excel data and your settings on your computer between pages</td></tr>
     <tr><td><code>activeTab</code>, <code>scripting</code></td><td>So the popup's "Fill this chapter" button can reach the open portal tab, including a tab opened before the extension was installed</td></tr>
   </table>
@@ -89,7 +89,7 @@
   <h2>Contact</h2>
   <p>Questions about this policy can be raised at <a href="https://github.com/it-theska-in/MSEI/issues">github.com/it-theska-in/MSEI/issues</a>.</p>
 
-  <p class="muted">MSE Inspection Autofill is an independent tool. It is not affiliated with, endorsed by, or operated by Metropolitan Stock Exchange of India Ltd.<br>Last updated: 21 November 2026</p>
+  <p class="muted">MSE Inspection Autofill is an independent tool. It is not affiliated with, endorsed by, or operated by Metropolitan Stock Exchange of India Ltd.<br>Last updated: 21 November 2026 (v1.2)</p>
 </main>
 </body>
 </html>
