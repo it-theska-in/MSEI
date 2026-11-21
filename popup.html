@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 340px; margin: 0; font: 13px/1.45 "Segoe UI", Arial, sans-serif; color: #1d2733; }
+  header { padding: 12px 14px; background: #1f6fb2; color: #fff; }
+  header b { display: block; font-size: 14px; }
+  header span { opacity: .85; font-size: 12px; }
+  section { padding: 12px 14px; border-bottom: 1px solid #e6e9ee; }
+  h2 { margin: 0 0 8px; font-size: 12px; color: #5b6878; font-weight: 600; }
+  .file { display: block; border: 1px dashed #9fb3c8; border-radius: 6px; padding: 10px; text-align: center; cursor: pointer; background: #f7f9fc; }
+  .file:hover { background: #eef3f9; }
+  input[type=file] { display: none; }
+  .muted { color: #6b7785; font-size: 12px; }
+  .ok { color: #1e7d46; } .err { color: #b52b27; }
+  label.opt { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; }
+  label.opt input { margin-top: 3px; }
+  input[type=text] { width: 100%; box-sizing: border-box; padding: 5px 7px; border: 1px solid #c8d1db; border-radius: 4px; font: inherit; margin-top: 3px; }
+  button { width: 100%; padding: 9px; border: 0; border-radius: 6px; background: #26a65b; color: #fff; font-weight: 600; font-size: 13px; font-family: inherit; cursor: pointer; }
+  button:disabled { background: #a8b3bf; cursor: default; }
+  #result { white-space: pre-wrap; margin-top: 8px; font-size: 12px; }
+  .small { font-size: 12px; margin-top: 3px; }
+</style>
+</head>
+<body>
+  <header><b>MSE Inspection Autofill</b><span>Fills chapter pages from the Annexure II Excel</span></header>
+
+  <section>
+    <h2>1. Excel file</h2>
+    <label class="file" for="file">Choose the Annexure II .xlsx</label>
+    <input type="file" id="file" accept=".xlsx">
+    <div id="loaded" class="muted small">No file loaded.</div>
+  </section>
+
+  <section>
+    <h2>2. Options</h2>
+    <label class="opt"><input type="checkbox" id="overwrite"><span>Overwrite values already on the page</span></label>
+    <label class="opt"><input type="checkbox" id="autoFill"><span>Fill each chapter automatically when it opens</span></label>
+    <label class="opt"><input type="checkbox" id="firePostback"><span>Run the portal's status-change refresh after filling <span class="muted">(only turn this on if Save rejects the statuses)</span></span></label>
+    <div class="small">Remark when N.A and the Excel has none
+      <input type="text" id="defaultRemarkNA" placeholder="e.g. Not applicable to the member" maxlength="1000"></div>
+    <div class="small" style="margin-top:6px">Remark when NC and the Excel has none
+      <input type="text" id="defaultRemarkNC" placeholder="optional" maxlength="1000"></div>
+  </section>
+
+  <section>
+    <h2>3. Fill</h2>
+    <div id="page" class="muted small" style="margin-bottom:8px">Checking current tab…</div>
+    <button id="fill" disabled>Fill this chapter</button>
+    <div id="result"></div>
+  </section>
+
+  <script src="xlsx.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

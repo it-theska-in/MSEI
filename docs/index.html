@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · MSE Inspection Autofill</title>
+<meta name="description" content="Privacy policy for the MSE Inspection Autofill Chrome extension.">
+<link rel="icon" href="icon128.png">
+<style>
+  :root { --ink: #1d2733; --muted: #5b6878; --blue: #1f6fb2; --line: #e3e8ee; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.65 "Segoe UI", system-ui, -apple-system, Arial, sans-serif; color: var(--ink); background: #f6f8fb; }
+  header { background: var(--blue); color: #fff; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header .wrap { display: flex; align-items: center; gap: 16px; padding-top: 28px; padding-bottom: 28px; }
+  header img { width: 56px; height: 56px; }
+  header h1 { margin: 0; font-size: 26px; line-height: 1.2; }
+  header p { margin: 2px 0 0; opacity: .85; }
+  main { background: #fff; margin: 32px auto 48px; padding: 32px 40px; border: 1px solid var(--line); border-radius: 10px; max-width: 760px; }
+  h2 { font-size: 19px; margin: 32px 0 8px; }
+  h2:first-child { margin-top: 0; }
+  p, li { color: #2c3846; }
+  ul { padding-left: 22px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  code { background: #eef2f6; padding: 1px 5px; border-radius: 4px; font-size: 14px; }
+  .summary { background: #eef7f1; border: 1px solid #cfe9d8; border-radius: 8px; padding: 14px 18px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  a { color: var(--blue); }
+  @media (max-width: 600px) { main { padding: 24px 20px; margin: 16px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img src="icon128.png" alt="">
+    <div>
+      <h1>MSE Inspection Autofill</h1>
+      <p>Privacy Policy</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h2>Summary</h2>
+  <p class="summary">MSE Inspection Autofill runs entirely in your browser. It reads the Excel file you choose and fills the audit report page you have open. Nothing is sent to us or to any third party. There are no analytics, tracking, or ads.</p>
+
+  <h2>What the extension does</h2>
+  <p>Auditors use the extension to fill the Internal Audit Report chapter pages on the MSE inspection portal (<code>inspection-os.msei.in</code>) from the Annexure II Excel template. You upload the Excel file, open a chapter page, and click a button to fill it. You review the page and submit it to the portal yourself. The extension never submits forms for you.</p>
+
+  <h2>Information the extension handles</h2>
+  <table>
+    <tr><th>Information</th><th>How it is used</th><th>Where it stays</th></tr>
+    <tr><td>Contents of the Excel file you choose (checkpoint wording, compliance status, sample sizes, instance counts, percentages, amounts, remarks)</td><td>To fill the matching fields on the chapter page</td><td>Your browser's local extension storage (<code>chrome.storage.local</code>) on your computer</td></tr>
+    <tr><td>Your extension settings (overwrite, auto-fill, default remarks)</td><td>To remember your choices</td><td>Local extension storage on your computer</td></tr>
+    <tr><td>The open chapter page on the MSE portal (chapter number, checkpoint wording, form fields)</td><td>Read in the page so each Excel row lands in the right field, and the fields are filled there</td><td>Never stored or copied anywhere by the extension</td></tr>
+  </table>
+  <p>The extension does <strong>not</strong> collect your name, email, login details, passwords, browsing history, location, or any other personal information. It does not read pages on any other website.</p>
+
+  <h2>Sharing and transfer</h2>
+  <ul>
+    <li>No data is sent to the developer, to any server, or to any third party.</li>
+    <li>No data is sold or used for advertising, credit decisions, or any purpose unrelated to filling the audit report.</li>
+    <li>The extension contains no remote code, analytics, or tracking scripts. All code ships inside the extension package.</li>
+  </ul>
+  <p>When <em>you</em> click Save on the portal, the portal receives the filled values just as if you had typed them. That submission happens between your browser and the portal under the portal's own terms, not the extension's.</p>
+
+  <h2>Permissions</h2>
+  <table>
+    <tr><th>Permission</th><th>Why it is needed</th></tr>
+    <tr><td>Access to <code>inspection-os.msei.in</code></td><td>To show the Autofill buttons on chapter pages and fill the form fields</td></tr>
+    <tr><td><code>storage</code></td><td>To keep the uploaded Excel data and your settings on your computer between pages</td></tr>
+    <tr><td><code>activeTab</code>, <code>scripting</code></td><td>So the popup's "Fill this chapter" button can reach the open portal tab, including a tab opened before the extension was installed</td></tr>
+  </table>
+
+  <h2>Keeping and deleting your data</h2>
+  <p>The Excel data stays in local storage until you upload a different file or remove the extension. Uninstalling the extension from <code>chrome://extensions</code> deletes all of it.</p>
+
+  <h2>Security</h2>
+  <p>Your data never leaves your computer through the extension, so its security depends on your device and browser profile. Use a device and Chrome profile that only authorised people can access.</p>
+
+  <h2>Children</h2>
+  <p>The extension is a professional tool for auditors and is not directed at children.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If the way the extension handles data changes, this page will be updated before the new version is published, and the date below will change.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy can be raised at <a href="https://github.com/it-theska-in/MSEI/issues">github.com/it-theska-in/MSEI/issues</a>.</p>
+
+  <p class="muted">MSE Inspection Autofill is an independent tool. It is not affiliated with, endorsed by, or operated by Metropolitan Stock Exchange of India Ltd.<br>Last updated: 21 November 2026</p>
+</main>
+</body>
+</html>
